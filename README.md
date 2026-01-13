@@ -2,6 +2,10 @@
 
 Public sharing subdomain for Thought Bites at `share.thoughtbites.app`. Anonymous visitors see teaser content with CTAs to download the app.
 
+**GitHub:** https://github.com/ryeweb/thoughtbites-share
+
+**Tech Stack:** Next.js 14, TypeScript, Tailwind CSS v3, Supabase
+
 ## Setup
 
 ### 1. Install Dependencies
@@ -79,7 +83,11 @@ NEXT_PUBLIC_IOS_URL_SCHEME=thoughtbites
 
 ## Database Setup
 
-Ensure your Supabase tables are publicly readable:
+**Important:** You must enable public read access for anonymous users.
+
+See **[SUPABASE-SETUP.md](SUPABASE-SETUP.md)** for detailed RLS policy setup.
+
+Required tables:
 - `bites` table (columns: id, title, hook, bullets, example, micro_action, category)
 - `deep_dives` table (columns: id, bite_id, content)
 
@@ -95,9 +103,14 @@ npm run start     # Start production server
 
 Deploy to Vercel with custom domain: share.thoughtbites.app
 
-1. Connect to GitHub repo
-2. Add environment variables (Supabase keys, App Store ID)
+1. Connect GitHub repo: https://github.com/ryeweb/thoughtbites-share
+2. Add environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_IOS_APP_STORE_ID`
+   - `NEXT_PUBLIC_IOS_URL_SCHEME`
 3. Set custom domain in Vercel settings
+4. See **[FIXES-APPLIED.md](FIXES-APPLIED.md)** if you encounter issues
 
 ## iOS App Configuration
 

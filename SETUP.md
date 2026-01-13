@@ -4,9 +4,25 @@
 
 Your Next.js 14 sharing subdomain for Thought Bites is fully built and ready to test.
 
+**GitHub:** https://github.com/ryeweb/thoughtbites-share
+
 ## 🚀 Next Steps
 
-### 1. Update Supabase Credentials
+### 1. Enable Public Access in Supabase
+
+**Critical:** Run this SQL in Supabase SQL Editor first:
+
+```sql
+CREATE POLICY "Allow anonymous read access to bites"
+ON bites FOR SELECT TO anon USING (true);
+
+CREATE POLICY "Allow anonymous read access to deep_dives"
+ON deep_dives FOR SELECT TO anon USING (true);
+```
+
+See **[SUPABASE-SETUP.md](SUPABASE-SETUP.md)** for details.
+
+### 2. Update Supabase Credentials
 
 Edit `.env.local` and replace the placeholder values:
 
@@ -20,7 +36,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_actual_supabase_anon_key
 - Go to Settings > API
 - Copy "Project URL" and "anon public" key
 
-### 2. Start Development Server
+### 3. Start Development Server
 
 ```bash
 npm run dev
@@ -28,7 +44,7 @@ npm run dev
 
 Open http://localhost:3000
 
-### 3. Test with a Real Bite ID
+### 4. Test with a Real Bite ID
 
 Once the dev server is running, test a bite by visiting:
 ```
@@ -37,7 +53,7 @@ http://localhost:3000/bite/[YOUR_BITE_ID]
 
 Replace `[YOUR_BITE_ID]` with an actual bite UUID from your Supabase `bites` table.
 
-### 4. Test Deep Dive Redirect
+### 5. Test Deep Dive Redirect
 
 Test the deep dive redirect route:
 ```
@@ -59,16 +75,17 @@ To test the iOS deep link functionality:
 
 - **Homepage text**: Edit `app/page.tsx` (line ~15-20)
 - **App Store ID**: Update `.env.local` after app is published
-- **Colors**: Already configured in `tailwind.config.ts`
+- **Colors**: Already configured in `tailwind.config.js`
 
 ## 🚢 Deploy to Production
 
-When ready to deploy:
+Code is already on GitHub: https://github.com/ryeweb/thoughtbites-share
 
-1. Push code to GitHub
-2. Connect repo to Vercel
-3. Add environment variables in Vercel dashboard
-4. Set custom domain: `share.thoughtbites.app`
+To deploy:
+
+1. Connect repo to Vercel (already on GitHub)
+2. Add environment variables in Vercel dashboard (same as `.env.local`)
+3. Set custom domain: `share.thoughtbites.app`
 
 ## 📋 Features Included
 

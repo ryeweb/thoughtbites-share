@@ -1,5 +1,7 @@
 # Issues Fixed
 
+**GitHub:** https://github.com/ryeweb/thoughtbites-share
+
 ## ✅ Issues Resolved
 
 ### 1. **Styling Issues (Purple Background & Button Colors)**
