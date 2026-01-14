@@ -99,6 +99,13 @@ npm run build     # Build for production
 npm run start     # Start production server
 ```
 
+## Available Pages
+
+- **Home** (`/`) - Landing page with featured bites
+- **Bite Detail** (`/bite/[id]`) - Individual bite content with download CTA
+- **Deep Dive** (`/deep-dive/[id]`) - Extended content for bites
+- **Privacy Policy** (`/privacy`) - Full privacy policy at share.thoughtbites.app/privacy
+
 ## Deployment
 
 Deploy to Vercel with custom domain: share.thoughtbites.app
